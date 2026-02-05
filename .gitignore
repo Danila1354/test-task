@@ -1,0 +1,171 @@
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static
+
+# Django secret key and sensitive data
+.env
+.env.local
+.env.*.local
+*.env
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Node.js / React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# React Build
+/frontend/build
+/frontend/dist
+/frontend/.next
+/frontend/out
+
+# Testing
+/coverage
+*.cover
+*.coverage
+.hypothesis/
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+
+# React / Next.js / Vite
+.next/
+.nuxt/
+dist/
+.cache/
+.parcel-cache/
+.vite/
+
+# Environment variables
+.env.production
+.env.development
+.env.test
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Redis
+dump.rdb
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Backup files
+*.bak
+*.swp
+*~
+
+# Uploaded media files
+media/
+uploads/
+
+# Migrations
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# System Files
+Thumbs.db
+Desktop.ini
+
+# Package files
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Webpack
+.webpack/
+
+# TypeScript
+*.tsbuildinfo
+
+# ESLint
+.eslintcache
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
