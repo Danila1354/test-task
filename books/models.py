@@ -58,7 +58,10 @@ class Book(models.Model):
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="available", db_index=True
     )
-    author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name="books")
+    authors = models.ManyToManyField(
+        "Author",
+        related_name="books",
+    )
     genres = models.ManyToManyField(Genre, related_name="books", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
