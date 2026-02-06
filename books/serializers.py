@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from .models import Book, Author
-
+from .models import Book, Author, Genre
 
 
 class AuthorShortSerializer(serializers.ModelSerializer):
@@ -12,6 +11,7 @@ class AuthorShortSerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
     authors = AuthorShortSerializer(many=True, read_only=True)
+
     class Meta:
         model = Book
         fields = [
@@ -31,6 +31,7 @@ class BookSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
 
+
 class BookCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
@@ -45,3 +46,25 @@ class BookCreateUpdateSerializer(serializers.ModelSerializer):
             "authors",
             "genres",
         )
+
+
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ["name", "description", "created_at", "updated_at"]
+        read_only_fields = ["created_at", "updated_at"]
+
+
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Author
+        fields = [
+            "name",
+            "bio",
+            "birth_date",
+            "country",
+            "photo",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["created_at", "updated_at"]
