@@ -1,17 +1,16 @@
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import IsAuthenticated
 from books.models import Book
 
-
 from .models import Review
+from .permissions import IsOwnerOrReadOnly
 from .serializers import ReviewSerializer
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
         return Review.objects.filter(book_id=self.kwargs["book_pk"]).select_related(
