@@ -11,7 +11,7 @@ from .permissions import IsAdminOrReadOnly
 
 
 class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
+    queryset = Book.objects.all().prefetch_related("authors", "genres")
     permission_classes = [IsAdminOrReadOnly]
 
     def get_serializer_class(self):

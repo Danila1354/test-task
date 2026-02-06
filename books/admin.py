@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Book, Author, Genre
-
+from reviews.models import Review
 
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
@@ -17,6 +17,14 @@ class AuthorAdmin(admin.ModelAdmin):
     ordering = ("name",)
 
 
+class ReviewInline(admin.TabularInline):
+    model = Review
+    extra = 0 
+    readonly_fields = ("user", "rating", "comment", "created_at", "updated_at")
+    can_delete = True 
+    show_change_link = True 
+
+
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = (
@@ -30,6 +38,7 @@ class BookAdmin(admin.ModelAdmin):
         "created_at",
     )
     list_filter = ("status", "genres")
-    search_fields = ("title", "author__name")
+    search_fields = ("title", "authors__name")
     ordering = ("-created_at",)
-    filter_horizontal = ("genres",)
+    filter_horizontal = ("genres", "authors")
+    inlines = [ReviewInline]
