@@ -5,6 +5,7 @@ pytestmark = pytest.mark.django_db
 
 
 def test_books_list_public(api_client, book):
+    """Любой пользователь может получить список книг."""
     response = api_client.get("/api/v1/books/")
 
     assert response.status_code == status.HTTP_200_OK
@@ -12,6 +13,7 @@ def test_books_list_public(api_client, book):
 
 
 def test_books_create_forbidden_for_user(api_client, user):
+    """Обычный пользователь не может создавать книги."""
     api_client.force_authenticate(user=user)
 
     response = api_client.post(
@@ -23,6 +25,7 @@ def test_books_create_forbidden_for_user(api_client, user):
 
 
 def test_books_create_allowed_for_admin(api_client, admin, author, genre):
+    """Администратор может создать книгу."""
     api_client.force_authenticate(user=admin)
 
     response = api_client.post(
@@ -42,6 +45,7 @@ def test_books_create_allowed_for_admin(api_client, admin, author, genre):
 
 
 def test_book_serializer_returns_short_authors(api_client, book):
+    """Сериализатор книги возвращает краткое представление авторов (id и name)."""
     response = api_client.get(f"/api/v1/books/{book.id}/")
 
     authors = response.data["authors"]
@@ -51,6 +55,11 @@ def test_book_serializer_returns_short_authors(api_client, book):
 
 
 def test_books_create_invalid_data(api_client, admin, author, genre):
+    """
+    Нельзя создать книгу с некорректными данными:
+    - без обязательного поля title
+    - с отрицательной ценой
+    """
     api_client.force_authenticate(user=admin)
 
     response = api_client.post(
