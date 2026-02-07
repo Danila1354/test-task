@@ -67,7 +67,7 @@ REST API для интернет-магазина книг с отзывами, 
 1. **Клонируем репозиторий**  
 ```
 git clone https://github.com/Danila1354/test-task.git  
-cd books_shop
+cd test-task
 ``` 
 2. **Создаем и активируем виртуальное окружение**
 ```
@@ -78,7 +78,7 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-4. Настраиваем базу данных
+4. **Настраиваем базу данных**
 
 - Создайте PostgreSQL базу данных и пользователя с правами на эту базу.
 - Скопируйте файл `.env.example` в `.env` и укажите свои значения
