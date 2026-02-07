@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Avg, Count
 from django.utils import timezone
+from django.core.validators import MinValueValidator
 
 
 class Genre(models.Model):
@@ -44,7 +45,7 @@ class Book(models.Model):
 
     title = models.CharField(max_length=255, db_index=True)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     stock_quantity = models.IntegerField(default=0)
     pages = models.IntegerField(null=True, blank=True)
     published_date = models.DateField(null=True, blank=True)
