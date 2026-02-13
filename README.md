@@ -99,7 +99,7 @@ http://localhost:8000/
 
 Документация API доступна по адресу:
 
-http://localhost:8000/api/v1/docs￼
+http://localhost:8000/api/v1/docs/
 
 7. **Тесты**
 ```
