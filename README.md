@@ -106,3 +106,43 @@ http://localhost:8000/api/v1/docs/
 pytest
 ```
 
+## Запуск проекта через Docker
+
+1. **Клонируем репозиторий**  
+```
+git clone https://github.com/Danila1354/test-task.git  
+cd test-task
+``` 
+2. **Создаем файл окружения**
+```
+cp .env.example .env
+```
+Отредактируйте .env с вашими значениями (PostgreSQL, Django secret key и т.д.)  
+
+3. **Устанавливаем зависимости**
+```
+pip install -r requirements.txt
+```
+4. **Запуск через Docker Compose**
+```
+docker-compose up -d --build
+```
+5. **Создание суперпользователя (admin)**
+```
+docker-compose exec django_app python manage.py createsuperuser
+```  
+6. **Выполнение тестов**
+```
+docker-compose exec django_app pytest
+```
+7. **Остановка проекта**
+```
+docker-compose down
+```
+После запуска сервер будет доступен по адресу:
+
+http://localhost:8000/  
+
+Документация API доступна по адресу:
+
+http://localhost:8000/api/v1/docs/
